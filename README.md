@@ -7,10 +7,12 @@ This transformer adds JSX support for Fusion (https://elttob.github.io/Fusion/)
 ``` npm i -D rbxts-transformer-fusion```
 
 ### Add rbxts-transformer-fusion as a transformer in your tsconfig.json
+Also you need to add the transformer to your typeroots
 
 ```json
 {
 	"compilerOptions": {
+		"typeRoots": ["node_modules/@rbxts","node_modules/rbxts-transformer-fusion"],
 		"plugins": [
 			{"transform": "rbxts-transformer-fusion"}
 		]

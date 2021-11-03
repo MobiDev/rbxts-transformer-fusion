@@ -3,11 +3,11 @@
 	"version": "0.0.1",
 	"description": "A template transformer",
 	"main": "out/index.js",
-	"author": "Fireboltofdeath <fireboltofpublic@gmail.com> (https://github.com/Fireboltofdeath)",
-	"license": "ISC",
+	"author": "MobiDev (https://github.com/MobiDev)",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/FireTS/rbxts-transformer-template.git"
+		"url": "https://github.com/MobiDev/rbxts-transformer-fusion.git"
 	},
 	"scripts": {
 		"postinstall": "node ./out/postinstall.js"
