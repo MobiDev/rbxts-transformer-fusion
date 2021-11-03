@@ -1,7 +1,24 @@
-# rbxts-transformer-template
-This is a simple template framework that simplifies creating transformers.
-It allows you to transform code in stages, as well as communicate to past and future stages.
+# rbxts-transformer-fusion
+This transformer adds JSX support for Fusion (https://elttob.github.io/Fusion/)
 
-This was designed specifically for Roblox-TS, but should work on normal transformers.
+## instructions:
+### Install rbxts-transformer-fusion:
 
-Example stages/util are built into the template, however they may be moved into a seperate examples directory eventually.
+``` npm i -D rbxts-transformer-fusion```
+
+### Add rbxts-transformer-fusion as a transformer in your tsconfig.json
+
+```json
+{
+	"compilerOptions": {
+		"plugins": [
+			{"transform": "rbxts-transformer-fusion"}
+		]
+	}
+}
+```
+
+## Notes 
+There are a lot of known bugs, thats why this is a beta.
+
+If you find one that doesn't have an issue, please create one (if you can be bothered).
