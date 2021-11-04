@@ -2,6 +2,9 @@
 This transformer adds JSX support for Fusion (https://elttob.github.io/Fusion/)
 
 ## instructions:
+### Install roblox-ts@next
+``` npm i roblox-ts@next ```
+
 ### Install rbxts-transformer-fusion:
 
 ``` npm i -D rbxts-transformer-fusion```
