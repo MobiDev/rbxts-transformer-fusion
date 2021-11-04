@@ -9,7 +9,7 @@ type lowercaseCreatableInstances = {
 
 declare global {
 	namespace JSX {
-		type element = Instance;
+		type Element = Instance
 		export type JsxInstance<T extends Instance> = {
 			[P in WritablePropertyNames<T>]?: T[P] | Computed<T[P]>;
 		} & {
