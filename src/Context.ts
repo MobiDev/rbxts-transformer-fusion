@@ -46,12 +46,12 @@ export class Context {
 	 * Stage2 -> File1, File2, File3
 	 * @param sourceFiles The source files to transform
 	 */
-	transformAll(sourceFiles: readonly ts.SourceFile[]): Map<ts.SourceFile, ts.SourceFile> {
+	transformAll(sourceFiles: readonly ts.SourceFile[], context: ts.TransformationContext): Map<ts.SourceFile, ts.SourceFile> {
 		const cache = new Map<ts.SourceFile, ts.SourceFile>();
 		for (let i = 0; i < this.stages.length; i++) {
 			for (const sourceFile of sourceFiles) {
 				const actualSourceFile = cache.get(sourceFile) ?? sourceFile;
-				cache.set(sourceFile, this.transform(actualSourceFile, this.stages[i]));
+				cache.set(sourceFile, this.transform(actualSourceFile, this.stages[i], context));
 			}
 		}
 		return cache;
@@ -62,11 +62,11 @@ export class Context {
 	 * @param sourceFile The source file to transform
 	 * @param stage The stage to run on the source file
 	 */
-	transform(sourceFile: ts.SourceFile, stage: Stage<ts.Node>): ts.SourceFile {
+	transform(sourceFile: ts.SourceFile, stage: Stage<ts.Node>, context: ts.TransformationContext): ts.SourceFile {
 		const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
 			if (stage.wants === undefined) {
 				if (ts.isSourceFile(node)) {
-					return stage.visit(node);
+					return stage.visit(node, context);
 				}
 				return node;
 			} else {
@@ -76,7 +76,7 @@ export class Context {
 					}
 				}
 				if (stage.wants?.(node)) {
-					return stage.visit(node);
+					return stage.visit(node, context);
 				}
 			}
 			return ts.visitEachChild(node, visitor, this.transformationContext);
@@ -137,7 +137,7 @@ export class Stage<T extends ts.Node = ts.SourceFile> {
 	 * Visit, and modify, a specific node
 	 * @param node The node to visit
 	 */
-	visit(node: T): ts.VisitResult<ts.Node> {
+	visit(node: T, context: ts.TransformationContext): ts.VisitResult<ts.Node> {
 		return node;
 	}
 }

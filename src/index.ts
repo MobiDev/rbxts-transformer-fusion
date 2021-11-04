@@ -1,11 +1,12 @@
 import ts from "byots";
 import { Context } from "./Context";
-import { Stage1 } from "./stages/Stage1";
+import { Stage1, JsxSelfClosingElement } from "./stages/Stage1";
 
 // All stages must be in this list, and will run in the order of the list.
 // eslint-disable-next-line prettier/prettier
 const stages = [
-	Stage1
+	Stage1,
+	JsxSelfClosingElement
 ]
 
 /**
@@ -26,7 +27,7 @@ export default function (program: ts.Program, config: TransformerConfig) {
 		let transformed: Map<ts.SourceFile, ts.SourceFile>;
 		return (file: ts.SourceFile) => {
 			if (!transformed) {
-				transformed = transformContext.transformAll(program.getSourceFiles());
+				transformed = transformContext.transformAll(program.getSourceFiles(), context);
 			}
 			return transformed.get(file) ?? file;
 		};
