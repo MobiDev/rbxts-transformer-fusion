@@ -67,7 +67,7 @@ function transformEvent(node: ObjectLiteralExpression, name: string, context: ts
 				start: property.getStart(),
 				length: property.getWidth(),
 				category: ts.DiagnosticCategory.Error,
-				code: 736001,
+				code: " Fusion" as unknown as number,
 				messageText: "Fusion: Events with spread assignments are not supported"
 			})
 		} else {
@@ -76,7 +76,7 @@ function transformEvent(node: ObjectLiteralExpression, name: string, context: ts
 				start: property.getStart(),
 				length: property.getWidth(),
 				category: ts.DiagnosticCategory.Error,
-				code: 736001,
+				code: " Fusion" as unknown as number,
 				messageText: `Fusion: Events with ${ts.SyntaxKind[property.kind]} are not supported`
 			})
 		}
@@ -135,8 +135,6 @@ export class Stage1 extends Stage<ts.JsxElement> {
 	}
 
 	visit(node: ts.JsxElement, context: ts.TransformationContext): ts.Node {
-		if (!classes) {
-		}
 		return ts.isJsxElement(node.parent) ? node : transformJsxElement(node, context)
 	}
 }

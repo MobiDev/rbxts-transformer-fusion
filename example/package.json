@@ -1,0 +1,29 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rbxtsc",
+    "watch": "rbxtsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rbxts/compiler-types": "^1.2.7-types.0",
+    "@rbxts/types": "^1.0.548",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-roblox-ts": "^0.0.32",
+    "prettier": "^2.4.1",
+    "rbxts-transformer-fusion": "file:../rbxts-transformer-fusion-0.0.2.tgz",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@rbxts/fusion": "^0.1.0-ts.beta.11"
+  }
+}

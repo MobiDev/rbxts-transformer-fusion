@@ -8,6 +8,7 @@ import { Context } from "../Context";
  */
 export function ExplicitContext(context: Context, node: ts.Identifier): ts.Symbol | undefined {
 	return context.typeChecker.getSymbolAtLocation(node);
+	
 }
 
 /**
