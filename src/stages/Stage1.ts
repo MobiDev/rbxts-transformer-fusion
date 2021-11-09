@@ -1,7 +1,7 @@
 import ts, { JsxElement, JsxExpression, ObjectLiteralExpression, PropertyAssignment } from "byots";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { Stage } from "../Context";
+import { Context, Stage } from "../Context";
 
 const classes = JSON.parse(readFileSync(join(__dirname, "..", "classes.json"), "utf-8")) as {[key: string]: string}
 
@@ -97,7 +97,7 @@ function transformJsxTagNameExpression(node: ts.JsxTagNameExpression): ts.Expres
 function transformJsxChildren(children: ts.NodeArray<ts.JsxChild>, context: ts.TransformationContext): ts.PropertyAssignment {
 	const elements = [] as ts.Expression[]
 	const onlyElements = children.filter((c) => {
-		if (ts.isJsxElement(c) || ts.isJsxExpression(c)) {
+		if (ts.isJsxElement(c) || ts.isJsxExpression(c) || ts.isJsxSelfClosingElement(c)) {
 			return true
 		} else if (ts.isJsxFragment(c)) {
 			context.addDiagnostic({
@@ -105,7 +105,7 @@ function transformJsxChildren(children: ts.NodeArray<ts.JsxChild>, context: ts.T
 				start: c.getStart(),
 				length: c.getWidth(),
 				category: ts.DiagnosticCategory.Error,
-				code: 736001,
+				code: " Fusion" as unknown as number,
 				messageText: `Fusion: JSX fragments are not supported`
 			})
 		}
@@ -114,6 +114,8 @@ function transformJsxChildren(children: ts.NodeArray<ts.JsxChild>, context: ts.T
 	onlyElements.forEach((c) => {
 		if (ts.isJsxElement(c)) {
 			elements.push(transformJsxElement(c, context))
+		}  else if (ts.isJsxSelfClosingElement(c)) {
+			elements.push(transformJsxSelfClosingElement(c, context))
 		} else if (c.expression) {
 			elements.push(c.expression)
 		}
