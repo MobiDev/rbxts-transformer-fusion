@@ -23,14 +23,12 @@ async function main() {
 
     const build = JSON.parse(await get(`https://raw.githubusercontent.com/RobloxAPI/build-archive/master/data/production/builds/${latestGuid}/API-Dump.json`))
     const classes = (build.Classes as Array<any>).map((classs) => classs.Name) as string[]
-    console.log(classes)
 
     const doubleClass: {[key: string]: string} = {}
 
     classes.forEach((classs) => {
         doubleClass[classs.toLowerCase()] = classs
     })
-    console.log(doubleClass)
     fs.writeFile(path.join(__dirname, "classes.json"), JSON.stringify(doubleClass))
 }
 

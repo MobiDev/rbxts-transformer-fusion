@@ -1,6 +1,6 @@
 {
 	"name": "rbxts-transformer-fusion",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A template transformer",
 	"main": "out/index.js",
 	"author": "MobiDev (https://github.com/MobiDev)",
