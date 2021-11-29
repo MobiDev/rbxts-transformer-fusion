@@ -1,0 +1,38 @@
+{
+	"name": "rbxts-transformer-fusion",
+	"version": "0.1.0",
+	"description": "A template transformer",
+	"main": "out/index.js",
+	"author": "MobiDev (https://github.com/MobiDev)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MobiDev/rbxts-transformer-fusion.git"
+	},
+	"scripts": {
+		"postinstall": "node ./out/postinstall.js"
+	},
+	"dependencies": {
+		"byots": "4.1.0-dev.20201102.16.32",
+		"typescript": "=4.5.2"
+	},
+	"devDependencies": {
+		"@types/node": "^14.17.32",
+		"@typescript-eslint/eslint-plugin": "^4.9.1",
+		"@typescript-eslint/parser": "^4.9.1",
+		"eslint": "^7.15.0",
+		"eslint-config-prettier": "^7.0.0",
+		"eslint-plugin-prettier": "^3.2.0",
+		"prettier": "^2.2.1"
+	},
+	"peerDependencies": {
+		"@rbxts/compiler-types": "^1.2.7-types.0",
+		"@rbxts/fusion": "^0.1.0-ts.beta.11",
+		"@rbxts/types": "^1.0.0"
+	},
+	"files": [
+		"out",
+		"jsx.d.ts"
+	],
+	"typings": "jsx.d.ts"
+}
